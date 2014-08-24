@@ -1,25 +1,31 @@
-<% content_for :title do %>My super sweet dashboard<% end %>
+<% content_for :title do %>业务看板<% end %>
+<input type='hidden' id="from_org_id" value='<%= params[:from_org_id] %>' />
 <div class="gridster">
   <ul>
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="bill_count"  style="background-color:#ff9618" data-field="bill_count" data-view="CustomNumber" data-title="当日票据" data-moreinfo="" data-prefix=""></div>
     </li>
+
+    <li data-row="1" data-col="2" data-sizex="2" data-sizey="1">
+      <div data-id="carrying_fee" data-field="carrying_fee" data-view="CustomNumber" data-title="运费" data-moreinfo="" data-prefix="￥"></div>
+    </li>
+
+    <li data-row="1" data-col="2" data-sizex="2" data-sizey="1">
+      <div data-id="goods_fee" data-field="goods_fee" data-view="CustomNumber" data-title="代收货款" data-moreinfo="" data-prefix="￥"></div>
+    </li>
+
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="synergy" data-view="Meter" data-title="Synergy" data-min="0" data-max="100"></div>
+      <div data-id="goods_num" data-field="goods_num" data-view="CustomNumber" data-title="货物件数" data-moreinfo="" data-prefix="" data-suffix="件"></div>
     </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="2">
-      <div data-id="buzzwords" data-view="List" data-unordered="true" data-title="Buzzwords" data-moreinfo="# of times said around the office"></div>
-    </li>
-
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="valuation" data-view="Number" data-title="Current Valuation" data-moreinfo="In billions" data-prefix="$"></div>
+      <div data-id="insured_fee" data-field="insured_fee" data-view="CustomNumber" data-title="保险费" data-moreinfo="" data-prefix="￥" data-suffix=""></div>
     </li>
-
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="convergence" data-view="Graph" data-title="Convergence" style="background-color:#ff9618"></div>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="from_short_carrying_fee" data-field="from_short_carrying_fee" data-view="CustomNumber" data-title="发货短途" data-moreinfo="" data-prefix="￥" data-suffix=""></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="to_short_carrying_fee" data-field="to_short_carrying_fee" data-view="CustomNumber" data-title="到货短途" data-moreinfo="" data-prefix="￥" data-suffix=""></div>
     </li>
   </ul>
-  <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://<%=request.host%>:<%=request.port%>/widgets/welcome</div></center>
 </div>

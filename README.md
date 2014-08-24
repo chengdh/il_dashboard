@@ -1,1 +1,1 @@
-Check out http://shopify.github.com/dashing for more information.
+物流系统的dashboard，同时也在lmis-app上使用

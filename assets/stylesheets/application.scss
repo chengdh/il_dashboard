@@ -31,7 +31,6 @@ $text-danger-color: #fff;
   -moz-animation:     $animation-name $duration $function #{$animation-iteration-count};
   -ms-animation:      $animation-name $duration $function #{$animation-iteration-count};
 }
-
 // ----------------------------------------------------------------------------
 // Base styles
 // ----------------------------------------------------------------------------
@@ -254,4 +253,9 @@ h3 {
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+@media screen and (max-width:768px) {
+    .gridster, .gridster ul { width:100% !important ; position:static !important }
+    .gridster ul li { width:100% !important ; position:relative !important ; top:0 !important ; left:0 !important ; overflow:hidden ; display:table ; height:400px }
+}
 
