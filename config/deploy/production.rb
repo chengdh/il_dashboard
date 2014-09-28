@@ -1,26 +1,27 @@
 # -*- encoding : utf-8 -*-
-require "rvm/capistrano"
-#set unicorn support
-require 'capistrano3/unicorn'
 set :rails_env,   "production"
-set :unicorn_env, "production"
 set :app_env,     "production"
+set :unicorn_rack_env, "production"
 
 set :application, "il_dashboard"
 set :repo_url,  "git@github.com:chengdh/il_dashboard.git"
-#
 set :scm, :git
 
 set :password, ask('Server password', nil)
-server 'zz.yanzhaowuliu.com', user: 'lmis', port: 22, password: fetch(:password), roles: %w{app web db}
+server '122.0.76.160', user: 'lmis', port: 22, password: fetch(:password), roles: %w{app web db}
+
 
 set :deploy_to,"~/app/il_dashboard"
 
-#set rvm support
-set :rvm_ruby_string, '1.9.3@rails32_gemset'
-#若rvm以system wide安装,则rvm设置如下
-set :rvm_path, "/usr/local/rvm"
-set :rvm_bin_path, "/usr/local/rvm/bin"
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '1.9.3-p448'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
 
-after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
-set :unicorn_bin,'r193_unicorn_rails'
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+end
