@@ -1,12 +1,9 @@
 require "json"
-current_valuation = 0
-current_karma = 0
 
-
-SCHEDULER.every '2s' do
-  uri = URI('http://localhost:3000/api/v1/dataset/call_kw.json')
+SCHEDULER.every '100s' do
+  uri = URI('http://zz.yanzhaowuliu.com/api/v1/dataset/call_kw.json')
   req = Net::HTTP::Post.new(uri.path)
-  req.set_form_data(:auth_token => "yfrnsiRhSTi2V4Z6pknP",
+  req.set_form_data(:auth_token => "bZLf2G8tDoqQMTDBVnz1",
                       :model => "carrying_bill",
                       :method => "dashing_bills_count_data")
 
@@ -31,13 +28,13 @@ points = []
 end
 last_x = points.last[:x]
 
-SCHEDULER.every '2s' do
+SCHEDULER.every '100s' do
   points.shift
   last_x += 1
 
-  uri = URI('http://localhost:3000/api/v1/dataset/call_kw.json')
+  uri = URI('http://zz.yanzhaowuliu.com/api/v1/dataset/call_kw.json')
   req = Net::HTTP::Post.new(uri.path)
-  req.set_form_data(:auth_token => "yfrnsiRhSTi2V4Z6pknP",
+  req.set_form_data(:auth_token => "bZLf2G8tDoqQMTDBVnz1",
                       :model => "carrying_bill",
                       :method => "dashing_bills_count_data")
 
