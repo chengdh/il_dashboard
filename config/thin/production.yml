@@ -1,6 +1,6 @@
 --- 
 user: lmis
-group: sudo
+group: lmis 
 pid: /home/lmis/app/il_dashboard/current/tmp/pids/thin.pid
 timeout: 30
 wait: 30
