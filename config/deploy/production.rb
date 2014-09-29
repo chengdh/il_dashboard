@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+set :rails_env,     "production"
 set :app_env,     "production"
 set :unicorn_rack_env, "production"
 

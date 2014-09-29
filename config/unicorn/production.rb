@@ -12,8 +12,8 @@ worker_processes 2 # increase or decrease
 listen socket_file, :backlog => 1024
 
 pid pid_file
-stderr_path err_log
-stdout_path log_file
+#stderr_path err_log
+#stdout_path log_file
 
 # make forks faster
 preload_app true
