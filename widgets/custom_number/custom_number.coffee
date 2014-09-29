@@ -39,14 +39,14 @@ class Dashing.CustomNumber extends Dashing.Widget
     today_bills = []
     today_bills.push(d) for d in data.today when d.from_org_id == @get('from_org_id')
     for d in today_bills
-      @today_bills_count += d[@show_field]
+      @today_bills_count += parseFloat(d[@show_field])
 
 
     @yesterday_bills_count = 0
     yesterday_bills = []
     yesterday_bills.push(d) for d in data.yesterday when d.from_org_id == @get('from_org_id')
     for d in yesterday_bills
-      @yesterday_bills_count += d[@show_field]
+      @yesterday_bills_count += parseFloat(d[@show_field])
 
     @set('current',@today_bills_count)
     @set('last',@yesterday_bills_count)
