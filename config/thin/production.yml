@@ -1,7 +1,8 @@
 --- 
-user: www-data
-group: www-data
+user: lmis
+group: www-data 
 pid: /home/lmis/app/il_dashboard/current/tmp/pids/thin.pid
+port: 5432
 timeout: 30
 wait: 30
 log: /home/lmis/app/il_dashboard/current/log/thin.log
