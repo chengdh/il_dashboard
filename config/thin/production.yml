@@ -1,6 +1,6 @@
 --- 
-#user: lmis
-#group: sudo
+user: lmis
+group: sudo
 pid: /home/lmis/app/il_dashboard/current/tmp/pids/thin.pid
 timeout: 30
 wait: 30
@@ -12,7 +12,7 @@ max_persistent_conns: 512
 servers: 1
 threaded: true
 no-epoll: true
-#daemonize: true
+daemonize: true
 socket: /home/lmis/app/il_dashboard/current/tmp/sockets/thin.sock
 chdir: /home/lmis/app/il_dashboard/current
 tag: il_dashboard_server aux
