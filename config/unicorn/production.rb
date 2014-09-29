@@ -1,5 +1,5 @@
 # define paths and filenames
-deploy_to = "~/app/il_dashboard"
+deploy_to = "/home/lmis/app/il_dashboard"
 rails_root = "#{deploy_to}/current"
 pid_file = "#{rails_root}/tmp/pids/unicorn.pid"
 socket_file= "#{rails_root}/tmp/sockets/unicorn.sock"
