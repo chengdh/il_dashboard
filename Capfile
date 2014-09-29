@@ -5,7 +5,8 @@ require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano/rbenv'
 require 'capistrano/bundler'
-require 'capistrano3/unicorn'
+require 'capistrano/thin'
+#require 'capistrano3/unicorn'
 
 # Includes tasks from other gems included in your Gemfile
 #

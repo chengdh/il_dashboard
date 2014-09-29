@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 set :rails_env,     "production"
 set :app_env,     "production"
-set :unicorn_rack_env, "production"
 
 set :application, "il_dashboard"
 set :repo_url,  "git@github.com:chengdh/il_dashboard.git"
@@ -20,8 +19,3 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
 after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
-end
