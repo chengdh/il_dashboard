@@ -7,13 +7,13 @@ log: /home/lmis/app/il_dashboard/current/log/thin.log
 timeout: 30
 wait: 30
 servers: 1
+daemonize: true
 #max_conns: 1024
 #environment: production
 #require: []
 #max_persistent_conns: 512
 #threaded: true
 #no-epoll: true
-#daemonize: true
 #socket: /home/lmis/app/il_dashboard/current/tmp/sockets/thin.sock
 #chdir: /home/lmis/app/il_dashboard/current
 #tag: il_dashboard_server aux
