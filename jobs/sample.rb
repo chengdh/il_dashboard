@@ -1,6 +1,6 @@
 require "json"
 
-SCHEDULER.every '100s' do
+SCHEDULER.every '500s' do
   uri = URI('http://zz.yanzhaowuliu.com/api/v1/dataset/call_kw.json')
   req = Net::HTTP::Post.new(uri.path)
   req.set_form_data(:auth_token => "bZLf2G8tDoqQMTDBVnz1",
@@ -28,7 +28,7 @@ points = []
 end
 last_x = points.last[:x]
 
-SCHEDULER.every '100s' do
+SCHEDULER.every '500s' do
   points.shift
   last_x += 1
 
