@@ -5,6 +5,14 @@
 #= require_directory .
 #= require_tree ../../widgets
 
+func_update_children_org_ids = (ids)->
+  console.log("Yeah! update children org ids!")
+  $('#children_org_ids').html("this is atest")
+
+func_update_from_org_id =  (id) ->
+  console.log("Yeah! update from org id!")
+  $('#from_org_id').html("this is atest 2")
+
 console.log("Yeah! The dashboard has started!")
 
 Dashing.on 'ready', ->
