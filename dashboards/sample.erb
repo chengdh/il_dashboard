@@ -1,6 +1,6 @@
 <% content_for :title do %>业务看板<% end %>
-<h3 id="from_org_id" >from org id</h3>
-<h3 id="children_org_ids" >children org ids</h3>
+<h3 id="from_org_id" ><%= params[:from_org_id] %></h3>
+<h3 id="children_org_ids" ><%= params[:children_org_ids]%></h3>
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
