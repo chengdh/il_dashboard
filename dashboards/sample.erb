@@ -1,5 +1,6 @@
 <% content_for :title do %>业务看板<% end %>
-<h3 id="from_org_id" ><%= params[:from_org_id] %></h3>
+<input type='hidden' id="from_org_id" "data-from_org_id=<%= params[:from_org_id] %>"/></h3>
+<input type='hidden' id="children_org_ids" "data-children_org_ids=<%= params[:children_org_ids].to_json %>"/></h3>
 <h3 id="children_org_ids" ><%= params[:children_org_ids]%></h3>
 <div class="gridster">
   <ul>
