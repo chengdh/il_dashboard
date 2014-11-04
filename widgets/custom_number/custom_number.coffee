@@ -7,7 +7,7 @@ class Dashing.CustomNumber extends Dashing.Widget
 
   @accessor 'from_org_id', -> parseInt($("#from_org_id").data('val'))
 
-  @accessor 'children_org_ids', -> parseInt($("#children_org_ids").data('val'))
+  @accessor 'children_org_ids', -> $("#children_org_ids").data('val')
 
   @accessor 'current'
 
