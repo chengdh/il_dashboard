@@ -5,7 +5,9 @@ class Dashing.CustomNumber extends Dashing.Widget
     if not @show_field
       @show_field = "bill_count"
 
-  @accessor 'from_org_id', -> parseInt($("#from_org_id").val())
+  @accessor 'from_org_id', -> parseInt($("#from_org_id").data('val'))
+
+  @accessor 'children_org_ids', -> parseInt($("#children_org_ids").data('val'))
 
   @accessor 'current'
 
@@ -38,6 +40,9 @@ class Dashing.CustomNumber extends Dashing.Widget
     @today_bills_count = 0
     today_bills = []
     today_bills.push(d) for d in data.today when d.from_org_id == @get('from_org_id')
+    array_children =  @get('children_org_ids')
+    today_bills.push(d) for d in data.today when "#{d.from_org_id}" in array_children
+
     for d in today_bills
       @today_bills_count += parseFloat(d[@show_field])
 
@@ -45,6 +50,10 @@ class Dashing.CustomNumber extends Dashing.Widget
     @yesterday_bills_count = 0
     yesterday_bills = []
     yesterday_bills.push(d) for d in data.yesterday when d.from_org_id == @get('from_org_id')
+    array_children =  @get('children_org_ids')
+    yesterday_bills.push(d) for d in data.yesterday when "#{d.from_org_id}" in array_children
+
+
     for d in yesterday_bills
       @yesterday_bills_count += parseFloat(d[@show_field])
 
