@@ -1,10 +1,5 @@
 class Dashing.CustomNumber extends Dashing.Widget
   #判断显示哪一个数据
-  ready: ->
-    @show_field = $(@node).data("field")
-    if not @show_field
-      @show_field = "bill_count"
-
   @accessor 'from_org_id', -> parseInt($("#from_org_id").data('val'))
 
   @accessor 'children_org_ids', -> $("#children_org_ids").data('val')
@@ -45,7 +40,7 @@ class Dashing.CustomNumber extends Dashing.Widget
       today_bills.push(d) for d in data.today when "#{d.from_org_id}" in array_children
 
     for d in today_bills
-      @today_bills_count += parseFloat(d[@show_field])
+      @today_bills_count += parseFloat(d[@field])
 
 
     @yesterday_bills_count = 0
@@ -57,7 +52,7 @@ class Dashing.CustomNumber extends Dashing.Widget
 
 
     for d in yesterday_bills
-      @yesterday_bills_count += parseFloat(d[@show_field])
+      @yesterday_bills_count += parseFloat(d[@field])
 
     @set('current',@today_bills_count)
     @set('last',@yesterday_bills_count)

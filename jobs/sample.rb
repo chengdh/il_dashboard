@@ -1,6 +1,6 @@
 require "json"
 
-SCHEDULER.every '500s' do
+SCHEDULER.every '60s' do
   uri = URI('http://zz.yanzhaowuliu.com/api/v1/dataset/call_kw.json')
   req = Net::HTTP::Post.new(uri.path)
   req.set_form_data(:auth_token => "bZLf2G8tDoqQMTDBVnz1",
@@ -22,6 +22,7 @@ SCHEDULER.every '500s' do
 end
 
 # Populate the graph with some random points
+=begin
 points = []
 (1..10).each do |i|
   points << { x: i, y: rand(50) }
@@ -47,3 +48,4 @@ SCHEDULER.every '500s' do
 
   send_event('graph_carrying_fee', points: points,today: data['result']['today'])
 end
+=end
