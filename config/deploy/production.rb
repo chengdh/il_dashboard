@@ -3,7 +3,7 @@ set :rails_env,     "production"
 set :app_env,     "production"
 
 set :application, "il_dashboard"
-set :repo_url,  "git@github.com:chengdh/il_dashboard.git"
+set :repo_url,  "git@git.oschina.net:chengdh/il_dashboard.git"
 set :scm, :git
 
 set :password, ask('Server password', nil)
