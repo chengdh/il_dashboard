@@ -1,6 +1,6 @@
 #coding: utf-8
 require "json"
-SCHEDULER.every '10s' do
+SCHEDULER.every '50s' do
   uri = URI('http://zz.yanzhaowuliu.com/api/v1/dataset/call_kw.json')
   req = Net::HTTP::Post.new(uri.path)
   req.set_form_data(:auth_token => "bZLf2G8tDoqQMTDBVnz1",
@@ -50,18 +50,25 @@ SCHEDULER.every '10s' do
   end
 
   #依次得到max数值
-  max_key = parsed_items.max_by {|k,v| v["carrying_fee"] }
-  max_carrying_fee =  parsed_items[max_key.first]["carrying_fee"]
-  progress_items = []
+  max_carrying_fee_key = parsed_items.max_by {|k,v| v["carrying_fee"] }
+  max_carrying_fee =  parsed_items[max_carrying_fee_key.first]["carrying_fee"]
+
+  max_goods_num_key = parsed_items.max_by {|k,v| v["goods_num"] }
+  max_goods_num =  parsed_items[max_goods_num_key.first]["goods_num"]
+
+  progress_items_carrying_fee = []
+  progress_items_goods_num = []
   parsed_items.each do |org_name,fee_hash|
     carrying_fee = fee_hash["carrying_fee"].to_f
-    progress_val = carrying_fee/max_carrying_fee*100
+    carrying_fee_val = carrying_fee/max_carrying_fee*100
 
-    puts "carrying_fee:#{fee_hash["carrying_fee"]}"
-    puts "max_carrying_fee:#{max_carrying_fee}"
-    puts "progress_val:#{progress_val}"
-    progress_items.push(:name => org_name ,:progress => progress_val,:value => carrying_fee )
+    goods_num = fee_hash["goods_num"].to_f
+    goods_num_val = goods_num/max_goods_num*100
+
+
+    progress_items_carrying_fee.push(:name => org_name ,:progress => carrying_fee_val,:value => carrying_fee )
+    progress_items_goods_num.push(:name => org_name ,:progress => goods_num_val,:value => goods_num )
   end
-  puts progress_items
-  send_event( 'progress_bars', :title => "日营业额统计图",:progress_items => progress_items)
+  send_event( 'progress_bars_carrying_fee', :title => "运费统计",:progress_items => progress_items_carrying_fee)
+  send_event( 'progress_bars_goods_num', :title => "货物统计",:progress_items => progress_items_goods_num)
 end
