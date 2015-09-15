@@ -1,6 +1,6 @@
 require "json"
 
-SCHEDULER.every '60s' do
+SCHEDULER.every '3600s' do
   uri = URI('http://zz.yanzhaowuliu.com/api/v1/dataset/call_kw.json')
   req = Net::HTTP::Post.new(uri.path)
   req.set_form_data(:auth_token => "bZLf2G8tDoqQMTDBVnz1",

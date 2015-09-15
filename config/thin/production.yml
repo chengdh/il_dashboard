@@ -1,6 +1,6 @@
 --- 
 user: lmis
-group: lmis 
+group: lmis
 pid: /home/lmis/app/il_dashboard/current/tmp/pids/thin.pid
 port: 3000
 log: /home/lmis/app/il_dashboard/current/log/thin.log

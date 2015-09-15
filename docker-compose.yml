@@ -1,0 +1,9 @@
+web:
+  build: .
+  #command: bundle exec unicorn
+  command: bundle exec thin start
+  volumes:
+    # This seems to work as-is once you expose /Users to the boot2docker vm.
+    - .:/il_dashboard
+  ports:
+    - "3000:3000"
