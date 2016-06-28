@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: https://ruby.taobao.org/
   specs:
     backports (3.6.0)
     capistrano (3.2.1)
@@ -95,3 +95,6 @@ DEPENDENCIES
   capistrano-thin
   dashing
   unicorn
+
+BUNDLED WITH
+   1.12.5

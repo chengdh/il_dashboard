@@ -1,4 +1,4 @@
-web:
+dashboard_web:
   build: .
   #command: bundle exec unicorn
   command: bundle exec thin start
@@ -7,3 +7,21 @@ web:
     - .:/il_dashboard
   ports:
     - "3000:3000"
+
+  log_driver: "json-file"
+  log_opt:
+    max-size: "100k"
+    max-file: "20"
+
+  volumes_from:
+    - bundle_dashboard
+
+bundle_dashboard:
+  # 'image' will vary depending on your docker-compose 
+  # project name. You may need to run `docker-compose build web`
+  # before this works.
+  image: ildashboard_dashboard_web
+  command: echo "I'm a little data container, short and stout..."
+  volumes:
+    - /bundle
+
